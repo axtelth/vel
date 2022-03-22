@@ -1,0 +1,5 @@
+import Config
+
+config :vel,
+  token: "...",
+  v: "5.131"
