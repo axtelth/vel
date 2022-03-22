@@ -1,8 +1,8 @@
 defmodule Vel do
-  require VkApi
+  import VkApi
   require Longpoll
 
-  VkApi.gen(:messageSend, "messages.send")
+  gen(:messageSend, "messages.send")
 
   @spec main :: no_return
   def main do

@@ -10,8 +10,7 @@ defmodule VkApi do
 
     args =
       args
-      |> Map.put(:v, @v)
-      |> Map.put(:access_token, @token)
+      |> Map.merge(%{:access_token => @token, :v => @v})
       |> URI.encode_query()
 
     case HTTPoison.post(method_url, args, %{"Content-Type" => "application/x-www-form-urlencoded"}) do
@@ -22,7 +21,7 @@ defmodule VkApi do
 
   defmacro gen(method, value) do
     quote do
-      def unquote(method)(params) do
+      defp unquote(method)(params \\ %{}) do
         VkApi.invoke(unquote(value), params)
       end
     end

@@ -14,7 +14,7 @@ defmodule Longpoll do
   end
 
   defp update_lp() do
-    case getlongpollserver(%{}) do
+    case getlongpollserver() do
       {:ok, lp_srv_info} -> lp_srv_info
       _ -> update_lp()
     end
